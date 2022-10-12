@@ -12,4 +12,4 @@ languages:
 # Provision a function app on a Consumption plan with a bad run from package
 
 
-[![Deploy To Azure](https://github.com/andrew-manca/NewHireScenarios/tree/main/RunFromPackageFailed)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fgithub.com%2Fandrew-manca%2FNewHireScenarios%2Ftree%2Fmain%2FRunFromPackageFailed%2Fdeploy.json)
+[![Deploy To Azure](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.svg?sanitize=true)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fgithub.com%2Fandrew-manca%2FNewHireScenarios%2Ftree%2Fmain%2FRunFromPackageFailed%2Fdeploy.json)
