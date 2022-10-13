@@ -9,13 +9,6 @@
         "description": "Location for all resources except Application Insights."
       }
     },
-    "appInsightsLocation": {
-      "type": "string",
-      "defaultValue": "East US",
-      "metadata": {
-        "description": "Location for Application Insights."
-      }
-    },
     "appName": {
       "type": "string",
       "defaultValue": "[format('fnapp{0}', uniqueString(resourceGroup().id))]",
@@ -62,7 +55,8 @@
     "functionAppName": "[parameters('appName')]",
     "hostingPlanName": "[parameters('appName')]",
     "storageAccountName": "[toLower(parameters('storageAccountName'))]",
-    "functionNameComputed": "MyHttpTriggeredFunction"
+    "functionNameComputed": "MyHttpTriggeredFunction",
+    "appInsightsLocation": "East US"
   },
   "resources": [
     {
@@ -108,7 +102,7 @@
       "type": "Microsoft.Insights/components",
       "apiVersion": "2020-02-02",
       "name": "[variables('functionAppName')]",
-      "location": "[parameters('appInsightsLocation')]",
+      "location": "[variables('appInsightsLocation')]",
       "kind": "web",
       "properties": {
         "Application_Type": "web"
