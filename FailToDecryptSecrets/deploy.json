@@ -11,6 +11,7 @@
     },
     "appInsightsLocation": {
       "type": "string",
+      "defaultValue": "East US",
       "metadata": {
         "description": "Location for Application Insights."
       }
