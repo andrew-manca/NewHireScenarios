@@ -166,7 +166,7 @@
     {
       "type": "Microsoft.Web/sites/functions",
       "apiVersion": "2020-12-01",
-      "name": "[format('{0}/{1}', variables('functionAppName'), variables('functionNameComputed'))]",
+      "name": "variables('functionNameComputed'))]",
         "dependsOn": [
         "[resourceId('Microsoft.Insights/components', variables('functionAppName'))]",
         "[resourceId('Microsoft.Web/serverfarms', variables('hostingPlanName'))]",
@@ -181,7 +181,7 @@
               "name": "req",
               "type": "httpTrigger",
               "direction": "in",
-              "authLevel": "function",
+              "authLevel": "master",
               "methods": [
                 "get"
               ]
@@ -207,7 +207,7 @@
         "swiftSupported": true
       },
       "dependsOn": [
-        "[resourceId('Microsoft.Web/sites/functions', format('{0}/{1}', variables('functionAppName'), variables('functionNameComputed')))]",
+        "[resourceId('Microsoft.Web/sites/functions',  variables('functionNameComputed'))]",
         "[resourceId('Microsoft.Network/virtualNetworks', parameters('vnetName'))]"
       ]
     },
