@@ -9,19 +9,6 @@
                 "description": "Location for all resources except Application Insights."
             }
         },
-        "appInsightsLocation": {
-            "type": "string",
-            "metadata": {
-                "description": "Location for Application Insights."
-            }
-        },
-        "appName": {
-            "type": "string",
-            "defaultValue": "[format('fnapp{0}', uniqueString(resourceGroup().id))]",
-            "metadata": {
-                "description": "The name of the function app that you wish to create."
-            }
-        },
         "storageAccountType": {
             "type": "string",
             "defaultValue": "Standard_LRS",
@@ -32,20 +19,6 @@
             ],
             "metadata": {
                 "description": "Storage Account type"
-            }
-        },
-        "vnetName": {
-            "type": "string",
-            "defaultValue": "TestingVnet",
-            "metadata": {
-                "description": "The name of the virtual network to be created."
-            }
-        },
-        "subnetName": {
-            "type": "string",
-            "defaultValue": "default",
-            "metadata": {
-                "description": "The name of the subnet to be created within the virtual network."
             }
         },
         "storageAccountName": {
