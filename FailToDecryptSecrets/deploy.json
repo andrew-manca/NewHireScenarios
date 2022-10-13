@@ -166,7 +166,8 @@
         "[resourceId('Microsoft.Insights/components', variables('functionAppName'))]",
         "[resourceId('Microsoft.Web/serverfarms', variables('hostingPlanName'))]",
         "[resourceId('Microsoft.Storage/storageAccounts', variables('storageAccountName'))]",
-        "[resourceId('Microsoft.Network/virtualNetworks', parameters('vnetName'))]"
+        "[resourceId('Microsoft.Network/virtualNetworks', parameters('vnetName'))]",
+        "[resourceId('Microsoft.Web/sites', variables('functionAppName'))]"
       ],
       "properties": {
         "config": {
