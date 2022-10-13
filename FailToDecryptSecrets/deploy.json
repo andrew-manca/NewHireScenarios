@@ -220,7 +220,7 @@
         "dependsOn": [
         "[resourceId('Microsoft.Web/sites', variables('functionAppName'))]",
         "[resourceId('Microsoft.Network/virtualNetworks', parameters('vnetName'))]",
-        "[resourceId('Microsoft.Web/sites/functions/keys', concat(variables('functionAppName'),'/default/MyHttpTriggeredFunction') )]"
+        "[resourceId('Microsoft.Web/sites/functions/keys', concat(variables('functionAppName'),'/default', 'MyHttpTriggeredFunction') )]"
       ],
       "properties": {
         "parameters":{
