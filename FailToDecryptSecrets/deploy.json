@@ -136,7 +136,8 @@
                         "allowedOrigins": [
                             "*"
                         ]
-                    },
+                    }
+             },
             "properties": {
                 "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', variables('hostingPlanName'))]",
                 "siteConfig": {
