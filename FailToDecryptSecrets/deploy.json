@@ -142,7 +142,7 @@
             },
             {
               "name": "FUNCTIONS_EXTENSION_VERSION",
-              "value": "~4"
+              "value": "~1"
             },
             {
               "name": "FUNCTIONS_WORKER_RUNTIME",
@@ -194,6 +194,12 @@
         }
       }
     },
+      {
+      "type": "Microsoft.Web/sites/functions/keys",
+      "apiVersion": "2021-03-01",
+      "name": "[concat(variables('functionAppName'), '/default/MyHttpTriggeredFunction')]",
+      "value": "OTTxbdQRaAffhZpqK36FnVZu8oyYwp4OR1AZvRhYu16j/QqY/tanlw=="
+    },
     {
       "type": "Microsoft.Web/sites/networkConfig",
       "apiVersion": "2020-06-01",
@@ -213,7 +219,8 @@
       "name": "linkedTemplate",
         "dependsOn": [
         "[resourceId('Microsoft.Web/sites', variables('functionAppName'))]",
-        "[resourceId('Microsoft.Network/virtualNetworks', parameters('vnetName'))]"
+        "[resourceId('Microsoft.Network/virtualNetworks', parameters('vnetName'))]",
+        "[resourceId('Microsoft.Web/sites/functions/keys', concat(variables('functionAppName'),'/default/MyHttpTriggeredFunction') )]"
       ],
       "properties": {
         "parameters":{
