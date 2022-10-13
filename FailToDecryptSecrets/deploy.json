@@ -192,7 +192,7 @@
             "dependsOn": [
                 "[resourceId('Microsoft.Web/sites', variables('functionAppName'))]",
                 "[resourceId('Microsoft.Network/virtualNetworks', parameters('vnetName'))]",
-                "[resourceId('Microsoft.Web/sites/sourecontrols', concat(variables('functionAppName'), 'web'))]"
+                "[resourceId('Microsoft.Web/sites/sourecontrols', concat(variables('functionAppName'),'/web'))]"
             ],
             "properties": {
                 "parameters": {
