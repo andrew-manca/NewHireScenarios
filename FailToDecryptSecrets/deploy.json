@@ -55,7 +55,6 @@
         "functionAppName": "[parameters('appName')]",
         "hostingPlanName": "[parameters('appName')]",
         "storageAccountName": "[toLower(parameters('storageAccountName'))]",
-        "functionNameComputed": "MyHttpTriggeredFunction",
         "appInsightsLocation": "East US"
     },
     "resources": [
@@ -192,7 +191,8 @@
             "name": "linkedTemplate",
             "dependsOn": [
                 "[resourceId('Microsoft.Web/sites', variables('functionAppName'))]",
-                "[resourceId('Microsoft.Network/virtualNetworks', parameters('vnetName'))]"
+                "[resourceId('Microsoft.Network/virtualNetworks', parameters('vnetName'))]",
+                "[resourceId('Microsoft.Web/sites/sourecontrols', concat(variables('functionAppName'), 'web'))]"
             ],
             "properties": {
                 "parameters": {
