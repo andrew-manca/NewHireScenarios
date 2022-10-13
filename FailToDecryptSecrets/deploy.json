@@ -130,9 +130,13 @@
             "name": "[variables('functionAppName')]",
             "location": "[parameters('location')]",
             "kind": "functionapp",
-            "siteConfig":{
-              "alwaysOn":"true"
-            },
+             "siteConfig": {
+                    "alwaysOn": true,
+                    "cors": {
+                        "allowedOrigins": [
+                            "*"
+                        ]
+                    },
             "properties": {
                 "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', variables('hostingPlanName'))]",
                 "siteConfig": {
