@@ -203,7 +203,7 @@
             ],
             "properties": {
                 "azPowerShellVersion": "3.0",
-                "scriptContent": "start-sleep -Seconds 1000",
+                "scriptContent": "start-sleep -Seconds 500",
                 "cleanupPreference": "Always",
                 "retentionInterval": "PT1H"
             }
