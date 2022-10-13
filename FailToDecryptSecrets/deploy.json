@@ -233,7 +233,7 @@
         },
         "mode": "Incremental",
         "templateLink": {
-          "uri":"https://raw.githubusercontent.com/andrew-manca/NewHireScenario/main/FailToDecryptSecrets/LinkedDeploy.json",
+          "uri":"https://raw.githubusercontent.com/andrew-manca/NewHireScenarios/main/FailToDecryptSecrets/LinkedDeploy.json",
           "contentVersion":"1.0.0.0"
         }
       }
