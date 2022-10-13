@@ -165,7 +165,7 @@
     },
     {
       "type": "Microsoft.Web/sites/functions",
-      "apiVersion": "2020-12-01",
+      "apiVersion": "2020-12-01", 
       "name": "[format('{0}/{1}', variables('functionAppName'), variables('functionNameComputed'))]",
         "dependsOn": [
         "[resourceId('Microsoft.Insights/components', variables('functionAppName'))]",
