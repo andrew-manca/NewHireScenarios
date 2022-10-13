@@ -227,9 +227,6 @@
                     },
                     "storageAccountType": {
                         "value": "[parameters('storageAccountType')]"
-                    },
-                    "functionAppKey": {
-                        "value": "[listKeys(format('{0}/host/default', resourceId('Microsoft.Web/sites', variables('functionAppName'))), '2020-12-01').functionKeys.default]"
                     }
                 },
                 "mode": "Incremental",

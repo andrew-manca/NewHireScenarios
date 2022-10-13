@@ -23,9 +23,6 @@
         },
         "storageAccountName": {
             "type": "string"
-        },
-        "functionAppKey":{
-            "type":"string"
         }
     },
     "resources": [
@@ -47,3 +44,4 @@
         }
     ]
 }
+
