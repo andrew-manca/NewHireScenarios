@@ -130,6 +130,9 @@
             "name": "[variables('functionAppName')]",
             "location": "[parameters('location')]",
             "kind": "functionapp",
+            "siteConfig":{
+              "alwaysOn":"true"
+            },
             "properties": {
                 "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', variables('hostingPlanName'))]",
                 "siteConfig": {
