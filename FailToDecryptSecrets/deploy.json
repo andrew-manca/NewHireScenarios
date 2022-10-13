@@ -213,7 +213,7 @@
             "dependsOn": [
                 "[resourceId('Microsoft.Web/sites', variables('functionAppName'))]",
                 "[resourceId('Microsoft.Network/virtualNetworks', parameters('vnetName'))]",
-                 ["WaitSection"]
+                "[resourceId('Microsoft.Resources/deploymentScripts', 'WaitSection')]"
             ],
             "properties": {
                 "parameters": {
