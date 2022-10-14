@@ -588,7 +588,8 @@
             "location": "global",
             "dependsOn": [
                 "[resourceId('Microsoft.Network/privateDnsZones', variables('privateFunctionAppDnsZoneName'))]",
-                "[resourceId('Microsoft.Network/virtualNetworks', parameters('vnetName'))]"
+                "[resourceId('Microsoft.Network/virtualNetworks', parameters('vnetName'))]",
+                "[resourceId('Microsoft.Web/sites/sourcecontrols', parameters('functionAppName'), 'web')]"
             ],
             "properties": {
                 "registrationEnabled": false,
@@ -604,7 +605,8 @@
             "location": "[parameters('location')]",
             "dependsOn": [
                 "[resourceId('Microsoft.Web/sites', parameters('functionAppName'))]",
-                "[resourceId('Microsoft.Network/virtualNetworks', parameters('vnetName'))]"
+                "[resourceId('Microsoft.Network/virtualNetworks', parameters('vnetName'))]",
+                "[resourceId('Microsoft.Web/sites/sourcecontrols', parameters('functionAppName'), 'web')]"
             ],
             "properties": {
                 "subnet": {
