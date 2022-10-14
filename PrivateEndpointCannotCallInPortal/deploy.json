@@ -569,7 +569,8 @@
             "name": "[format('{0}/{1}', parameters('functionAppName'), 'virtualNetwork')]",
             "dependsOn": [
                 "[resourceId('Microsoft.Web/sites', parameters('functionAppName'))]",
-                "[resourceId('Microsoft.Network/virtualNetworks', parameters('vnetName'))]"
+                "[resourceId('Microsoft.Network/virtualNetworks', parameters('vnetName'))]",
+                "[resourceId('Microsoft.Web/sites/sourcecontrols', parameters('functionAppName'), 'web')]"
             ],
             "properties": {
                 "subnetResourceId": "[resourceId('Microsoft.Network/virtualNetworks/subnets', parameters('vnetName'), parameters('functionSubnetName'))]",
