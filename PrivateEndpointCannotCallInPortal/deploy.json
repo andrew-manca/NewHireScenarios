@@ -546,22 +546,20 @@
                         }
                     ]
                 }
-            },
-             "resources": [
-                {
-                    "apiVersion": "2018-11-01",
-                    "name": "web",
-                    "type": "sourcecontrols",
-                    "dependsOn": [
-                        "[resourceId('Microsoft.Web/Sites', parameters('functionAppName'))]"
-                    ],
-                    "properties": {
-                        "RepoUrl": "https://github.com/andrew-manca/FailToDecrypt.git",
-                        "branch": "main",
-                        "IsManualIntegration": true
-                    }
-                }
-            ]
+            }
+        },
+        {
+            "apiVersion": "2018-11-01",
+            "name": "[format('{0}/{1}', parameters('functionAppName'), 'web')]",
+            "type": "Microsoft.Web/sites/sourcecontrols",
+            "dependsOn": [
+                "[resourceId('Microsoft.Web/Sites', parameters('functionAppName'))]"
+            ],
+            "properties": {
+                "RepoUrl": "https://github.com/andrew-manca/FailToDecrypt.git",
+                "branch": "main",
+                "IsManualIntegration": true
+            }
         },
         {
             "type": "Microsoft.Web/sites/networkConfig",
