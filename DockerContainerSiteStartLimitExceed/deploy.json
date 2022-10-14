@@ -1,0 +1,135 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "siteName": {
+            "type": "string",
+            "defaultValue": "[concat('FuncApp-', uniqueString(resourceGroup().id))]",
+            "metadata": {
+                "description": "The name of you Web Site."
+            }
+        },
+        "storageAccountName": {
+            "type": "String",
+            "defaultValue": "[concat('store', uniqueString(resourceGroup().id))]"
+        },
+        "functionLocation": {
+            "type": "string",
+            "defaultValue": "[resourceGroup().location]",
+            "metadata": {
+                "description": "Location for all resources."
+            }
+        },
+        "sku": {
+            "type": "string",
+            "defaultValue": "F1",
+            "metadata": {
+                "description": "The SKU of App Service Plan."
+            }
+        },
+        "linuxFxVersion": {
+            "type": "string",
+            "defaultValue": "amancacontainerregistry.azurecr.io/pythoncontainer:v1",
+            "metadata": {
+                "description": "Enter a container that will return a 404 for engineer to debug, default value will work"
+            }
+        },
+        "DockerRegistryURL":{
+            "type": "string",
+            "defaultValue": "https://amancacontainerregistry.azurecr.io",
+              "metadata": {
+                "description": "Enter the URL for your docker registry"
+            }
+        },
+         "DockerRegistryUserName":{
+            "type": "string",
+            "defaultValue": "amancaContainerRegistry",
+              "metadata": {
+                "description": "Enter the username for your docker registry"
+            }
+        },
+         "DockerRegistryPassword":{
+            "type": "string",
+            "defaultValue": "aGaBvm4MNJiNGVxCqlBzXNHMLfcN=e5i",
+              "metadata": {
+                "description": "Enter the Password for your docker registry"
+            }
+        }
+
+    },
+    "variables": {
+        "hostingPlanName": "[concat('hpn-', resourceGroup().name)]",
+        "storageAccountid": "[resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccountName'))]"
+    },
+    "resources": [
+        {
+            "type": "Microsoft.Web/sites",
+            "apiVersion": "2019-08-01",
+            "name": "[parameters('siteName')]",
+            "kind": "functionapp,linux",
+            "location": "[parameters('functionLocation')]",
+            "dependsOn": [
+                "[resourceId('Microsoft.Web/serverfarms', variables('hostingPlanName'))]",
+                "[resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccountName'))]"
+            ],
+            "properties": {
+                "name": "[parameters('siteName')]",
+                "siteConfig": {
+                    "alwaysOn": true,
+                    "linuxFxVersion": "[parameters('linuxFxVersion')]",
+                    "appSettings": [
+                        {
+                            "name": "FUNCTIONS_WORKER_RUNTIME",
+                            "value": "python"
+                        },
+                        {
+                            "name": "FUNCTIONS_EXTENSION_VERSION",
+                            "value": "~4"
+                        },
+                        {
+                            "name": "AzureWebJobsStorage",
+                            "value": "[concat('DefaultEndpointsProtocol=https;AccountName=', parameters('storageAccountName'), ';AccountKey=', listKeys(variables('storageAccountid'),'2019-06-01').keys[0].value)]"
+                        },
+                        {
+                            "name": "DOCKER_REGISTRY_SERVER_URL",
+                            "value": "[parameters('DockerRegistryURL')]"
+                        },
+                        {
+                            "name": "DOCKER_REGISTRY_SERVER_USERNAME",
+                            "value": "[parameters('DockerRegistryUserName')]"
+                        },
+                        {
+                            "name": "DOCKER_REGISTRY_SERVER_PASSWORD",
+                            "value": "[parameters('DockerRegistryPassword')]"
+                        }
+                    ]
+                },
+                "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', variables('hostingPlanName'))]",
+                "clientAffinityEnabled": false
+            }
+        },
+        {
+            "type": "Microsoft.Web/serverfarms",
+            "apiVersion": "2019-08-01",
+            "name": "[variables('hostingPlanName')]",
+            "location": "[parameters('functionLocation')]",
+            "kind": "linux",
+            "properties": {
+                "reserved": true
+            },
+            "sku": {
+                "Name": "[parameters('sku')]"
+            }
+        },
+        {
+            "type": "Microsoft.Storage/storageAccounts",
+            "name": "[parameters('storageAccountName')]",
+            "apiVersion": "2019-06-01",
+            "location": "[parameters('functionLocation')]",
+            "kind": "StorageV2",
+            "sku": {
+                "name": "Standard_LRS"
+            }
+        }
+    ]
+}
