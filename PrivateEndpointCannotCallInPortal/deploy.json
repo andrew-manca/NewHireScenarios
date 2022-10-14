@@ -553,7 +553,8 @@
             "name": "[format('{0}/{1}', parameters('functionAppName'), 'web')]",
             "type": "Microsoft.Web/sites/sourcecontrols",
             "dependsOn": [
-                "[resourceId('Microsoft.Web/Sites', parameters('functionAppName'))]"
+                "[resourceId('Microsoft.Web/Sites', parameters('functionAppName'))]",
+                "[resourceId('Microsoft.Web/sites/networkConfig', parameters('functionAppName'), 'virtualNetwork')]"
             ],
             "properties": {
                 "RepoUrl": "https://github.com/andrew-manca/FailToDecrypt.git",
@@ -567,8 +568,7 @@
             "name": "[format('{0}/{1}', parameters('functionAppName'), 'virtualNetwork')]",
             "dependsOn": [
                 "[resourceId('Microsoft.Web/sites', parameters('functionAppName'))]",
-                "[resourceId('Microsoft.Network/virtualNetworks', parameters('vnetName'))]",
-                "[resourceId('Microsoft.Web/sites/sourcecontrols', parameters('functionAppName'), 'web')]"
+                "[resourceId('Microsoft.Network/virtualNetworks', parameters('vnetName'))]"
             ],
             "properties": {
                 "subnetResourceId": "[resourceId('Microsoft.Network/virtualNetworks/subnets', parameters('vnetName'), parameters('functionSubnetName'))]",
