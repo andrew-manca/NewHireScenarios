@@ -511,7 +511,6 @@
                 "siteConfig": {
                     "functionsRuntimeScaleMonitoringEnabled": true,
                     "linuxFxVersion": "[if(variables('isReserved'), parameters('linuxFxVersion'), json('null'))]",
-                    "alwaysOn": true,
                     "appSettings": [
                         {
                             "name": "APPINSIGHTS_INSTRUMENTATIONKEY",
