@@ -33,7 +33,29 @@
             "metadata": {
                 "description": "Enter a container that will return a 404 for engineer to debug, default value will work"
             }
+        },
+        "DockerRegistryURL":{
+            "type": "string",
+            "defaultValue": "https://amancacontainerregistry.azurecr.io",
+              "metadata": {
+                "description": "Enter the URL for your docker registry"
+            }
+        },
+         "DockerRegistryUserName":{
+            "type": "string",
+            "defaultValue": "amancaContainerRegistry",
+              "metadata": {
+                "description": "Enter the username for your docker registry"
+            }
+        },
+         "DockerRegistryPassword":{
+            "type": "string",
+            "defaultValue": "aGaBvm4MNJiNGVxCqlBzXNHMLfcN=e5i",
+              "metadata": {
+                "description": "Enter the Password for your docker registry"
+            }
         }
+
     },
     "variables": {
         "hostingPlanName": "[concat('hpn-', resourceGroup().name)]",
@@ -67,6 +89,18 @@
                         {
                             "name": "AzureWebJobsStorage",
                             "value": "[concat('DefaultEndpointsProtocol=https;AccountName=', parameters('storageAccountName'), ';AccountKey=', listKeys(variables('storageAccountid'),'2019-06-01').keys[0].value)]"
+                        },
+                        {
+                            "name": "DOCKER_REGISTRY_SERVER_URL",
+                            "value": "[parameters('DockerRegistryURL')]"
+                        },
+                        {
+                            "name": "DOCKER_REGISTRY_SERVER_USERNAME",
+                            "value": "[parameters('DockerRegistryUserName')]"
+                        },
+                        {
+                            "name": "DOCKER_REGISTRY_SERVER_PASSWORD",
+                            "value": "[parameters('DockerRegistryPassword')]"
                         }
                     ]
                 },
