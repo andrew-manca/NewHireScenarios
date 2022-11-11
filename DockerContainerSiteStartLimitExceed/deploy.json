@@ -50,7 +50,7 @@
         },
          "DockerRegistryPassword":{
             "type": "string",
-            "defaultValue": "aGaBvm4MNJiNGVxCqlBzXNHMLfcN=e5i",
+            "defaultValue": "need to hide secret, please ping anmnaca to get the secret",
               "metadata": {
                 "description": "Enter the Password for your docker registry"
             }
