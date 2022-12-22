@@ -159,7 +159,7 @@
             },
             {
               "name": "serviceBusConnString",
-              "value": "[listKeys(format('{0}/AuthorizationRules/RootManageSharedAccessKey', resourceId('Microsoft.ServiceBus/namespaces', parameters('serviceBusNamespaceName'))), '2022-01-01-preview').primaryConnectionString]"
+              "value": "[listKeys(resourceId(concat('Microsoft.ServiceBus/namespaces/AuthorizationRules'),parameters('serviceBusNamespaceName'),'RootManageSharedAccessKey'),'2015-08-01').primaryConnectionString]"
             },
             {
               "name": "APPINSIGHTS_INSTRUMENTATIONKEY",
